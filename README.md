@@ -13,17 +13,12 @@ The primary goal of this report is to address the growing challenge of detecting
 
 The algorithm used in this study is representative of a distinct approach to plagiarism detection. Due to its popularity and significance in education the **MOSS (Measure of Software Similarity)** algorithm was used, this is a tokenization and fingerprinting algorithm. The MOSS algorithm works by breaking down code into 'fingerprints' and comparing the frequency and arrangement of those fingerprints to detect similarities using a method called winnowing.
 
-## Usage
-(How to use tool?)
-
 ## Algorithm/Methodology
-(Description of your plagiarism detection approach)
 MOSS's winnowing method works by generating tokens of the input code and generating k-grams, which are contiguous sequences of k tokens. A hash value is computed for each k-gram, and a fingerprint is created by selecting specific hashes based on the window size. These fingerprints are then compared to determine similarity. This approach is robust against techniques like renaming variables or changing the order of non-essential code blocks.
 
 The system architecture of this project is structured into two main components: **MOSS-based fingerprint generation** and **Similarity comparison**. By separating the fingerprint generation from the similarity comparison, the system ensures modularity, allowing for flexibility in adjusting detection/comparison methods. The **MOSS class** serves as the core of the process and generates a unique fingerprint for code input. Once fingerprints are generated, the **Comparator class** analyses the similarity between two fingerprints and produces a similarity score.
 
 ## Dataset
-(Information about the dataset used)
 The human-written source code plagiairism dataset retrieved from (Source Code Plagiarism Dataset) [Link](https://github.com/oscarkarnalim/sourcecodeplagiarismdataset)
 . The dataset consists of 467 Java source code files covering seven different programming tasks. Each task contains three directories. 'Original' contains the original code task, 'non-plagiarized' contains N-subdirectories each representing one code file, 'plagiarized' contains six sub-directories representing the plagiarism levels from Faidhi1987.
 The details of the dataset can be seen in the [corresponding paper](https://infedu.vu.lt/journal/INFEDU/article/16/info).
@@ -32,7 +27,6 @@ The AI-generated code dataset consists of seven directories for each of the prog
 
 
 ## Results
-(Summary of the evaluation results)
 The results of the AI self-similarity experiments indicate that AI-generated code samples, particularly in the 'Naive' dataset, tend to exhibit a high degree of similarity. This suggests that AI models often produce consistent patterns. The 'Adaptations', which was designed to introduce variation, resulted in a more dispersed similarity distribution, indicating that modifying the prompt or approach can reduce direct similarities between the AI-generated code samples, making it more difficult to identify AI-generated code.
 
 The findings indicate that while existing techniques like MOSS can effectively detect direct plagiarism, AI-generated code requires more nuanced strategies. One of the deficiencies of a token-based algorithm like MOSS is that it struggles in identifying deep structural similarities, it fails to handle logically equivalent but syntactically different code samples.
